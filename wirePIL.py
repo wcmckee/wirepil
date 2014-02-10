@@ -17,65 +17,19 @@ from PIL import ImageDraw
 import random
 import os
 from PIL import ImageChops
+import cocos
 
 # <codecell>
 
-artimgs = ('/home/wcmckee/Pictures/art/wp-content/uploads/2013/02')
+os.chdir('/home/will/Desktop/output/')
 
 # <codecell>
 
-os.chdir(artimgs)
+chdirz = random.choice(os.listdir('/home/will/Desktop/output/'))
 
 # <codecell>
 
-class Backup(object):
-    def findfiles(self, filestring):
-        filecur = os.listdir(os.curdir)
-        for filename in filecur:
-            if filestring in filename:
-                yield filename
-
-# <codecell>
-
-app = Backup()
-
-# <codecell>
-
-photolist = []
-
-# <codecell>
-
-for aviz in app.findfiles('1024x682.jpg'):
-    photolist.append(aviz)
-
-# <codecell>
-
-print photolist
-
-# <codecell>
-
-photoamou = len(photolist)
-
-# <codecell>
-
-ranznum = random.randint(0, photoamou)
-
-# <codecell>
-
-doubnum = ranznum + 1
-
-# <codecell>
-
-chdirz = photolist[ranznum]
-
-# <codecell>
-
-chdirz2 = photolist[doubnum]
-
-# <codecell>
-
-print chdirz2
-print chdirz
+chdirz2 = random.choice(os.listdir('/home/will/Desktop/output/'))
 
 # <codecell>
 
@@ -83,14 +37,11 @@ img2 = Image.open(chdirz)
 
 # <codecell>
 
-imgza2 = Image.open(chdirz2)
+imgza2 = Image.open(chdirz)
 
 # <codecell>
 
 imgAgain = img2.rotate(180)
-
-# <codecell>
-
 
 # <codecell>
 
@@ -106,6 +57,10 @@ enzSapz = ImageChops.subtract(imgSapz, img2)
 
 # <codecell>
 
+enzSapz.save('edit.jpg')
+
+# <codecell>
+
 imgLower = ImageChops.constant(imgAgain, 2)
 
 # <codecell>
@@ -114,11 +69,19 @@ imgOver = ImageEnhance.Brightness(imgLower)
 
 # <codecell>
 
+img4 = Image.open('edit.jpg')
+
+# <codecell>
+
+imgNever = ImageChops.blend(img4, imgAgain, .5)
+
+# <codecell>
+
 imgTitle = Image.open(chdirz)
 
 # <codecell>
 
-imgComt = ImageChops.blend(imgTitle, enzSapz, .5)
+imgComt = ImageChops.blend(imgTitle, imgNever, .5)
 
 # <codecell>
 
@@ -126,12 +89,12 @@ imgConvertz = ImageEnhance.Color(imgComt)
 
 # <codecell>
 
-img3 = ImageChops.screen(imgComt, img2)
+img3 = ImageChops.screen(imgNever, img2)
 
 # <codecell>
 
 
-bighImg = ImageChops.darker(img2, imgComt)
+bighImg = ImageChops.darker(img2, imgNever)
 
 # <codecell>
 
@@ -139,7 +102,16 @@ screen = ImageChops.difference(imgAgain,img2)
 
 # <codecell>
 
+screen.save('edit.jpg')
+
+# <codecell>
+
 brightLight = ImageEnhance.Brightness(screen)
+
+
+# <codecell>
+
+openFilz = Image.open('edit.jpg')
 
 # <codecell>
 
@@ -195,18 +167,30 @@ del draw
 
 # <codecell>
 
+img2.save("hello.PNG")
+
+# <codecell>
+
+helloz = Image.open("hello.PNG")
+
+# <codecell>
+
+os.chdir('/home/will/Desktop/newOut')
+
+# <codecell>
+
 cRan = random.randint(1,30)
 
 # <codecell>
 
-#import ImageFont, ImageDraw
+import ImageFont, ImageDraw
 
-#draw = ImageDraw.Draw(lightFilz)
+draw = ImageDraw.Draw(lightFilz)
 # use a truetype font
-#font = ImageFont.truetype("cs.ttf", 24)
-#draw.text((100, 200), "a film by William Mckee", fill=(49,cRan,2),font=font)
-#draw.text((400, 300), 'Suburb Nightmare: Mist City', fill =(49,3,cRan),font=font)
-#draw.text((600, 400), 'Based on the game: Suburb Warp Nighmare', fill=(cRan,3,2), font=font)
+font = ImageFont.truetype("cs.ttf", 24)
+draw.text((100, 200), "a film by William Mckee", fill=(49,cRan,2),font=font)
+draw.text((400, 300), 'Suburb Nightmare: Mist City', fill =(49,3,cRan),font=font)
+draw.text((600, 400), 'Based on the game: Suburb Warp Nighmare', fill=(cRan,3,2), font=font)
 
 
 # <codecell>
@@ -215,20 +199,17 @@ imgSwapz = ImageChops.difference(img2, fileSwap)
 
 # <codecell>
 
+lightFilz.save(chdirz)
+
+# <codecell>
+
 lightFilz.show()
 
 # <codecell>
 
-imgBlack = ImageChops.darker(imgSwapz, img2)
+imgBlack = ImageChops.darker(imgSwapz, imgNever)
 
 # <codecell>
 
 imgZero = ImageChops.invert(imgBlack)
-
-# <codecell>
-
-imgBlack.show()
-
-# <codecell>
-
 
