@@ -19,8 +19,8 @@ import os
 from PIL import ImageChops
 
 # <codecell>
-
-artimgs = ('/home/wcmckee/Pictures/art/wp-content/uploads/2013/02')
+usdir = raw_input('What dir? ')
+artimgs = (usdir)
 
 # <codecell>
 
