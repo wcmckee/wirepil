@@ -44,8 +44,8 @@ app = Backup()
 photolist = []
 
 # <codecell>
-
-for aviz in app.findfiles('1024x682.jpg'):
+filesearc = raw_input('search file')
+for aviz in app.findfiles(filesearc):
     photolist.append(aviz)
 
 # <codecell>
